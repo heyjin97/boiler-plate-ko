@@ -99,6 +99,19 @@ app.post('/api/users/login', (req, res) => {
 
     })
 
+    app.get('/api/users/logout', auth, (req, res) => {
+
+        User.findOneAndUpdate({_id: req.user._id},
+            { token: "" }
+        , (err, user) => {
+            if (err) return res.json({ success: false, err });
+            return res.status(200).send({
+                success: true
+            })
+        }
+            )
+    })
+
 
     //요청된 이메일이 데이터베이스에 있다면 비밀번호가 맞는 비밀번호인지 확인
 
