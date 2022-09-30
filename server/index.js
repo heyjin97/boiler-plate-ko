@@ -1,6 +1,5 @@
 const express = require('express')
-const app = express()
-const bodyParser = require('body-parser');
+const app = express();
 const cookieParser = require('cookie-parser');
 const { auth } = require('./middleware/auth');
 const { User } = require('./models/User');
@@ -8,12 +7,12 @@ const { User } = require('./models/User');
 const config = require('./config/key');
 
 //application/x-www-form-urlencoded
-app.use(bodyParser.urlencoded({
+app.use(express.urlencoded({
     extended: true
 }));
 
 //application.json
-app.use(bodyParser.json());
+app.use(express.json());
 app.use(cookieParser());
 
 
